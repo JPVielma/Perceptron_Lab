@@ -26,9 +26,9 @@ public class ANN_LAB_IA {
         n=input.nextInt();
         
         String[] vector=new String[n+m];
-        double[][] data = new double[999][999];
+        double[][] data = new double[m][d+1];
         int[] output = new int[m];
-        double[] in = new double[n];
+        double[] in = new double[d];
         
         vector[0]=input.nextLine();
         for(int i=0; i<m+n; i++){
@@ -48,7 +48,7 @@ public class ANN_LAB_IA {
         }
         
         Perceptron perceptron=new Perceptron();
-        perceptron.Train(data, output, d);
+        perceptron.Train(data, output, 1);
         
         if(!perceptron.getSolved()){
                 System.out.println("no solution found");

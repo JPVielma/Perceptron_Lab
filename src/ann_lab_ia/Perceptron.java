@@ -10,7 +10,7 @@ import java.util.Random;
  * @author juanp
  */
 public class Perceptron {
-    public static final int EPOCH=50;
+    public static final int EPOCH=1000;
     
     double[] weights;
     double threshold;
@@ -47,12 +47,15 @@ public class Perceptron {
             }
             else solved=false;
         }
+
     }
 
     public int Output(double[] input){
             double sum = 0.0;
             for(int i=0;i<input.length;i++){
                 sum += weights[i]*input[i];
+//                if(solved)
+//                System.out.println("Weight["+i+"]="+weights[i]);
             }
 
             if(sum>threshold)return 1;
@@ -61,6 +64,15 @@ public class Perceptron {
     
     public boolean getSolved(){
         return solved;
+    }
+    
+    public void setThreshold(double[][] inputs){
+        double bias=0;
+        for(int i=0; inputs[0].length+1>=i; i++){
+            bias+=inputs[0][i]*weights[i];
+        }
+        bias+=1;
+        
     }
         
 }
